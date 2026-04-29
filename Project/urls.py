@@ -22,9 +22,17 @@ from settings.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+     # Adicionando a home
+    path('', home , name='home'),
 ]
 
 # Configuração para arquivos estáticos e mídia (modo DEV)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# Desenvolvimento 
+
+# @norte_dev
+# Mariana V. N. Borges
