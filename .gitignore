@@ -1,0 +1,112 @@
+# Ambiente virtual
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib64/
+pip-log.txt
+pip-delete-this-directory.txt
+*.manifest
+*.log
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+/media
+/static
+/staticfiles
+/static_collected
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Banco de dados local
+*.db
+*.sqlite3
+
+# Arquivos de ambiente
+.env
+.env.*
+!.env.example
+
+# IDE e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-*
+.project
+.pydevproject
+.settings/
+*.bak
+
+# Testes e cache
+.pytest_cache/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+logs/
+temp/
+
+# Arquivos de mídia
+/media/
+/uploads/
+/static_media/
+
+# Mocks e dados sensíveis
+*.mock.json
+*.secret.json
+.cache/
+
+# Docker
+.dockerignore
+*.pid
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+*.~
