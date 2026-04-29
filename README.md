@@ -87,7 +87,11 @@ python manage.py createsuperuser
 python manage.py runserver
 
 # Passos iniciais executados na criação do projeto:
+
+# Criar Projeto
 django-admin startproject Project 
+
+# Criar Apps
 python manage.py startapp products
 python manage.py startapp orders
 python manage.py startapp users
