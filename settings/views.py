@@ -6,3 +6,7 @@ from .models import Settings
 def home (request):
     
     return render (request, 'home.html')
+
+def contact (request):
+    
+    return render(request, 'contato.html')
