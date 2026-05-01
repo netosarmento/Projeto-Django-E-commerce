@@ -95,4 +95,4 @@ django-admin startproject Project
 python manage.py startapp products
 python manage.py startapp orders
 python manage.py startapp users
-python manage.py startapp cart
+python manage.py startapp carts
