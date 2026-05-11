@@ -13,8 +13,7 @@
 | Nome | Papel |
 |---|---|
 | Carlos Jorge Sarmento Neto | Desenvolvedor |
-| Mariana N. V. Borges | Desenvolvedora/Colaboradora |
-| Socorro Borges | UI UX/Colaboradora |
+
 
 ---
 
