@@ -7,14 +7,52 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <!-- Aidiconando o CDN do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-  <!-- Nav -->   
-  <nav>
-  </nav>
+  <!-- Nav ref: https://getbootstrap.com/docs/4.0/components/navbar/ -->   
+  <nav class="navbar navbar-expand-lg navbar-light">
+     <a class="navbar-brand" href="#">
+       <img src="{% static 'img/logo.jpg' %}" alt="Minha Marca">
+     </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contatos</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="politicasDropdown" role="button" data-toggle="dropdown">
+                    Políticas e Privacidade
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Política de Privacidade</a>
+                    <a class="dropdown-item" href="#">Termos de Uso</a>
+                    <a class="dropdown-item" href="#">Política de Cookies</a>
+                </div>
+            </li>
+        </ul>
+        
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
+            
+        </form>
+    </div>
+</nav>
     <!-- END nav -->
 
     {% block body %}
@@ -40,6 +78,9 @@
   </div> 
 </footer>
 
-    <!-- Adicionar javascript aqui  <script src="""></script>  -->
+    <!-- Adicionar javascript aqui -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>     
 
 </html>
