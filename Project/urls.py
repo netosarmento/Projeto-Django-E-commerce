@@ -35,4 +35,3 @@ if settings.DEBUG:
 # Desenvolvimento 
 
 # @norte_dev
-# Mariana V. N. Borges

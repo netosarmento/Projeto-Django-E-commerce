@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/propaganda.css' %}">
     <!-- Aidiconando o CDN do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -55,6 +56,38 @@
 </nav>
     <!-- END nav -->
 
+<!-- ========== BANNER PRINCIPAL ========== -->
+{% if banners %}
+<section class="banner-section">
+    <div class="main-banner">
+        <img src="{{ banners.0.image.url }}" alt="{{ banners.0.title }}">
+        <div class="banner-content">
+            <h2>{{ banners.0.title }}</h2>
+            {% if banners.0.link %}
+                <a href="{{ banners.0.link }}" class="propaganda-link">Saiba mais →</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ========== PROPAGANDAS (3 IMAGENS) ========== -->
+{% if propagandas %}
+<section class="propagandas-section">
+    <div class="propagandas-grid">
+        {% for prop in propagandas %}
+        <div class="propaganda-item">
+            <img src="{{ prop.image.url }}" alt="{{ prop.title }}">
+            <div class="propaganda-info">
+                <h3>{{ prop.title }}</h3>
+                {% if prop.link %}
+                    <a href="{{ prop.link }}" class="propaganda-link">Ver mais →</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
     {% block body %}
 
     {% endblock body %} 
@@ -84,3 +117,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>     
 
 </html>
+
+
+<!-- # Desenvolvimento --> 
+
+<!-- # @norte_dev -->

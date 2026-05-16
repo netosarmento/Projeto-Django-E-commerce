@@ -11,3 +11,8 @@ urlpatterns = [
     path('limpar/', views.clear_cart, name='clear_cart'),
     path('mesclar/', views.merge_cart_after_login, name='merge_cart'),
 ]
+
+
+# Desenvolvimento 
+
+# @norte_dev

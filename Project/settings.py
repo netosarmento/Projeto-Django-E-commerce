@@ -141,4 +141,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Desenvolvimento 
 
 # @norte_dev
-# Mariana V. N. Borges

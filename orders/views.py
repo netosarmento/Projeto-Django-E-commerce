@@ -72,3 +72,9 @@ def get_cart_from_user(request):
     
     from carts.views import get_or_create_cart
     return get_or_create_cart(request)
+
+
+
+# Desenvolvimento 
+
+# @norte_dev
