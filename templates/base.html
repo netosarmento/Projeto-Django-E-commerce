@@ -7,16 +7,120 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/propaganda.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carrossel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
     <!-- Aidiconando o CDN do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+     {% block extra_css %}{% endblock %}
   </head>
   <body>
-  <!-- Nav -->   
-  <nav>
-  </nav>
+  <!-- Nav ref: https://getbootstrap.com/docs/4.0/components/navbar/ -->   
+  <nav class="navbar navbar-expand-lg navbar-light">
+     <a class="navbar-brand" href="#">
+       <img src="{% static 'img/logo.jpg' %}" alt="Minha Marca">
+     </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'img/logo.jpg' %}" alt="Minha Marca">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <form id="logout-form" method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link" style="background: none; border: none; color: rgba(255, 255, 255, 0.9) !important; cursor: pointer; padding: 0.5rem 1rem;">
+                            Sair
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'users:profile' %}" class="nav-link">Perfil</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'users:login' %}" class="nav-link">Entrar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'users:register' %}" class="nav-link">Cadastrar</a>
+                </li>
+            {% endif %}
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#">Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contatos</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="politicasDropdown" role="button" data-toggle="dropdown">
+                    Políticas e Privacidade
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Política de Privacidade</a>
+                    <a class="dropdown-item" href="#">Termos de Uso</a>
+                    <a class="dropdown-item" href="#">Política de Cookies</a>
+                </div>
+            </li>
+        </ul>
+        
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
+        </form>
+    </div>
+</nav>
     <!-- END nav -->
 
+<!-- ========== BANNER PRINCIPAL ========== -->
+{% if banners %}
+<section class="banner-section">
+    <div class="main-banner">
+        <img src="{{ banners.0.image.url }}" alt="{{ banners.0.title }}">
+        <div class="banner-content">
+            <h2>{{ banners.0.title }}</h2>
+            {% if banners.0.link %}
+                <a href="{{ banners.0.link }}" class="propaganda-link">Saiba mais →</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ========== PROPAGANDAS (3 IMAGENS) ========== -->
+{% if propagandas %}
+<section class="propagandas-section">
+    <div class="propagandas-grid">
+        {% for prop in propagandas %}
+        <div class="propaganda-item">
+            <img src="{{ prop.image.url }}" alt="{{ prop.title }}">
+            <div class="propaganda-info">
+                <h3>{{ prop.title }}</h3>
+                {% if prop.link %}
+                    <a href="{{ prop.link }}" class="propaganda-link">Ver mais →</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %} 
     {% block body %}
 
     {% endblock body %} 
@@ -36,10 +140,19 @@
           </ul>
         </div>
       </div>
-    </div> <!-- Fechamento do row -->
-  </div> <!-- Fechamento do container -->
+    </div> 
+  </div> 
 </footer>
 
-    <!-- Adicionar javascript aqui  <script src="""></script>  -->
+    <!-- Adicionar javascript aqui -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>     
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
+
+
+<!-- # Desenvolvimento --> 
+
+<!-- # @norte_dev -->

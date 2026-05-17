@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css%}
+<style>
+/* ===== Estilo do link "Esqueceu sua senha?" ===== */
+.forgot-password-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.forgot-password-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ===== Responsividade ===== */
+
+/* Telas até 991px */
+@media (max-width: 991px) {
+  .form-group.d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forgot-password-link {
+    margin-top: 10px;
+    margin-left: 0;
+    font-size: 0.9rem;
+  }
+}
+
+/* Telas até 600px */
+@media (max-width: 600px) {
+  .forgot-password-link {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .btn.btn-outline-info {
+    width: 100%;
+  }
+}
+</style>
+{% endblock extra_css %}
+{% block body %}
+  <div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_4.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+            data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span
+                        class="mr-2"><a href="index.html">Home</a></span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Login</h1>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<div class="content-section ml-5 mb-5 mt-5">
+
+  <style>
+    /* estilo mínimo para as mensagens */
+    .messages-list {
+      margin: 0 0 1rem 0;
+      padding: 0;
+    }
+    .messages-list li {
+      list-style: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .messages-list .error {
+      background: #f8d7da;
+      color: #842029;
+      border: 1px solid #f5c2c7;
+    }
+    .messages-list .success {
+      background: #d1e7dd;
+      color: #0f5132;
+      border: 1px solid #badbcc;
+    }
+
+    /* garantia de responsividade simples para o form */
+    .content-section form { max-width: 480px; margin: 0 auto; }
+  </style>
+
+{% if messages %}
+  <ul class="messages-list">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+  <form method="POST">
+  {% csrf_token %}
+  <fieldset class="form-group">
+    {{ form.as_p }}
+  </fieldset>
+
+  <div class="form-group d-flex align-items-center justify-content-between flex-wrap">
+    <button class="btn btn-outline-info" type="submit">Log In</button>
+    <a href="{% url 'users:password_reset' %}" class="forgot-password-link">Esqueceu sua senha?</a>
+  </div>
+</form>
+
+<div class="border-top pt-3">
+  <small class="text-muted">
+    Não tem Conta? 
+    <a class="ml-2 btn btn-danger" href="{% url 'users:register' %}">Cadastro</a>
+  </small>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block extra_css %}
+<style>
+  .ftco-navbar-light .navbar-nav > .nav-item.active > a { color: #fff; }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link { color: #fff;}
+  .ftco-navbar-light .navbar-nav > .nav-item.cta > a span { color: #fff;}
+</style>
+{% endblock extra_css %}
+ 
+{% block body %}
+<div class="hero-wrap js-fullheight" style="background-image: url({% static 'images/bg_4.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+            data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    <span class="mr-2"><a href="{% url 'settings:home' %}">Home</a></span>
+                </p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Cadastre-se</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section ml-5 mb-5 mt-5" style="max-width: 500px;">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Faça seu Cadastro</legend>
+      
+      <!-- EXIBIR ERROS GERAIS -->
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- LOOP DOS CAMPOS -->
+      {% for field in form %}
+        <div class="form-group mb-3">
+          <label class="font-weight-bold">{{ field.label }}</label>
+          {{ field }}
+          <!-- Exibir erros de campo -->
+          {% if field.errors %}
+            <div class="text-danger small">
+              {% for error in field.errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </fieldset>
+
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Cadastrar</button>
+    </div>
+  </form>
+
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Já tem uma Conta? <a class="ml-2" href="{% url 'users:login' %}">Login</a>
+    </small>
+  </div>
+</div>
+{% endblock body %}

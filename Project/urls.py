@@ -18,13 +18,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from settings.views import home
+from settings.views import home, contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     # Adicionando a home
     path('', home , name='home'),
+    path('', contact , name='contatos'),
+    path('contas/', include(('users.urls', 'users'), namespace='users')),
+    path('pedidos/', include(('orders.urls', 'orders'), namespace='orders')),
+    path('', include(('settings.urls', 'settings'), namespace='home')),
+    path('produtos/', include(('products.urls', 'products'), namespace='products')),
+    path('carrinho/', include(('carts.urls', 'carts'), namespace='carts')),
 ]
+
 
 # Configuração para arquivos estáticos e mídia (modo DEV)
 if settings.DEBUG:
@@ -35,4 +41,7 @@ if settings.DEBUG:
 # Desenvolvimento 
 
 # @norte_dev
-# Mariana V. N. Borges
+
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

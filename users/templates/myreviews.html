@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Minhas Avaliações</h2>
+    
+    {% if reviews %}
+        <div class="list-group">
+            {% for review in reviews %}
+                <div class="list-group-item mb-3 shadow-sm p-4 rounded">
+                    <h5>{{ review.product.title }}</h5>
+                    <p class="mb-1"><strong>Avaliação:</strong> {{ review.rate }} / 5</p>
+                    <p class="mb-0"><strong>Comentário:</strong> {{ review.feedback }}</p>
+                    <small class="text-muted">Data: {{ review.created_at|date:"d/m/Y H:i" }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Você ainda não fez nenhuma avaliação.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

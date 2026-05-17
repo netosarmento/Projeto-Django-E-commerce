@@ -2,7 +2,100 @@
 {% load static %}
 
 {% block body %}
+<!-- ========== CARROSSEL ========== -->
+{% if carrossel_itens %}
+<section class="carousel-section">
+    <div id="carrosselPrincipal" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicadores (bolinhas) -->
+        <div class="carousel-indicators">
+            {% for item in carrossel_itens %}
+            <button type="button" data-bs-target="#carrosselPrincipal" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+        
+        <!-- Slides -->
+        <div class="carousel-inner">
+            {% for item in carrossel_itens %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ item.image.url }}" class="d-block w-100" alt="{{ item.title }}">
+                {% if item.title or item.link %}
+                <div class="carousel-caption d-none d-md-block">
+                    {% if item.title %}
+                    <h3>{{ item.title }}</h3>
+                    {% endif %}
+                    {% if item.link %}
+                    <a href="{{ item.link }}" class="btn-carrossel">Saiba mais →</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Botões anterior/próximo -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carrosselPrincipal" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carrosselPrincipal" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+        </button>
+    </div>
+</section>
+{% endif %}
+<!-- ========== Cards de Produtos ========== -->
+<section class="products-section">
+    <div class="container-fluid">
+        {% for categoria_data in categorias_com_produtos %}
+        <div class="category-container">
+            <!-- Título da categoria -->
+            <h2 class="category-title">
+                <i class="bi bi-tag"></i>
+                {{ categoria_data.categoria.name }}
+            </h2>
+            
+            <!-- Grid de produtos -->
+            <div class="products-grid">
+                {% for product in categoria_data.produtos %}
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-card-img">
+                        {% if product.unit > 1 %}
+                        <span class="product-unit">{{ product.unit }} unidades</span>
+                        {% endif %}
+                    </div>
+                    <div class="product-card-body">
+                        <h5 class="product-card-title">{{ product.name }}</h5>
+                        <p class="product-card-description">{{ product.description|truncatechars:60 }}</p>
+                        <div class="product-card-price">
+                            R$ {{ product.price }}
+                            <span>à vista</span>
+                        </div>
+                        <a href="#" class="product-card-btn">
+                            <i class="bi bi-cart-plus"></i> Comprar
+                        </a>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="no-products">Nenhum produto disponível nesta categoria.</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="no-categories">
+            <p>Nenhuma categoria com produtos disponível no momento.</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
-<div> ESTOU FUNCIONANDO !</div>
+
 
 {% endblock body %}
+
+
+
+<!-- # Desenvolvimento --> 
+
+<!-- # @norte_dev -->

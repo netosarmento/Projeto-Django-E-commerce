@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+
+  <style>
+      .ftco-navbar-light .navbar-nav > .nav-item.active > a { color: #000; }
+  .ftco-navbar-light .navbar-nav > .nav-item > .nav-link { color: #000;}
+  .ftco-navbar-light .navbar-nav > .nav-item.cta > a span { color: #000;}
+
+    .reset-container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      .reset-container {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+{% endblock extra_css %}  
+
+{% block body %}
+
+  <div class="reset-container">
+    <h3 class="text-center mb-4">Redefinir Senha</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary w-100">Enviar Link de Redefinição</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <a href="{% url 'users:login' %}" class="text-muted">Voltar para Login</a>
+    </div>
+  </div>
+
+{% endblock body %}

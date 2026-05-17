@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'settings',
+    'products',
+    'orders',
+    'carts',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -141,4 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Desenvolvimento 
 
 # @norte_dev
-# Mariana V. N. Borges
+
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes
