@@ -58,3 +58,7 @@ class ProductReview(models.Model):
 
     def __str__(self):
         return f"Review {self.rate}/5 for {self.product.name} by {self.author.username}"
+    
+# Desenvolvimento 
+
+# @norte_dev

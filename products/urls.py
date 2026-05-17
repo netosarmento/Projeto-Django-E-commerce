@@ -10,3 +10,7 @@ urlpatterns = [
     path('adicionar-avaliacao/<int:product_id>/', add_review, name='add_review'),
     path('produtos/', product_list, name='product_list'),
 ]
+
+# Desenvolvimento 
+
+# @norte_dev

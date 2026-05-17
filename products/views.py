@@ -94,3 +94,7 @@ def product_list(request):
         'categorias_com_produtos': categorias_com_produtos,
     }
     return render(request, 'products/product_list.html', context)
+
+# Desenvolvimento 
+
+# @norte_dev
