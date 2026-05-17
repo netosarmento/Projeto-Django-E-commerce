@@ -42,3 +42,7 @@ class CarrosselAdmin(admin.ModelAdmin):
 # Desenvolvimento 
 
 # @norte_dev
+
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

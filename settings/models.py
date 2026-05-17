@@ -69,3 +69,9 @@ class Carrossel(models.Model):
         ordering = ['order', 'created_at']
         verbose_name = "Carrossel"
         verbose_name_plural = "Carrossel"
+        
+        
+
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

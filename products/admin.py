@@ -6,3 +6,6 @@ from .models import ProductReview, Products, Category
 admin.site.register(ProductReview)
 admin.site.register(Products)
 admin.site.register(Category)
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

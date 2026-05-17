@@ -31,3 +31,6 @@ urlpatterns = [
     ),
     name='password_reset_complete'),
 ]
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

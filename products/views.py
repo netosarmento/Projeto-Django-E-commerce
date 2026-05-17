@@ -98,3 +98,6 @@ def product_list(request):
 # Desenvolvimento 
 
 # @norte_dev
+# Developed by: Tech Norte Soluções
+# Instagram: norte_dev
+# MEI instagram: @tech.nortesolucoes

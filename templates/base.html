@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <title>Projeto Ecommerce</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,22 +12,15 @@
     <link rel="stylesheet" href="{% static 'css/propaganda.css' %}">
     <link rel="stylesheet" href="{% static 'css/carrossel.css' %}">
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
-    <!-- Aidiconando o CDN do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-     {% block extra_css %}{% endblock %}
-  </head>
-  <body>
-  <!-- Nav ref: https://getbootstrap.com/docs/4.0/components/navbar/ -->   
-  <nav class="navbar navbar-expand-lg navbar-light">
-     <a class="navbar-brand" href="#">
-       <img src="{% static 'img/logo.jpg' %}" alt="Minha Marca">
-     </a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- Adicionando o CDN do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
         <img src="{% static 'img/logo.jpg' %}" alt="Minha Marca">
     </a>
@@ -39,7 +32,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
             </li>
             
             {% if request.user.is_authenticated %}
@@ -64,7 +57,7 @@
             {% endif %}
             
             <li class="nav-item">
-                <a class="nav-link" href="#">Produtos</a>
+                <a class="nav-link" href="{% url 'products:product_list' %}">Produtos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Contatos</a>
@@ -86,7 +79,7 @@
         </form>
     </div>
 </nav>
-    <!-- END nav -->
+<!-- ========== FIM DA NAVBAR ========== -->
 
 <!-- ========== BANNER PRINCIPAL ========== -->
 {% if banners %}
@@ -120,39 +113,43 @@
         {% endfor %}
     </div>
 </section>
-{% endif %} 
-    {% block body %}
+{% endif %}
 
-    {% endblock body %} 
+<!-- ========== CONTEÚDO PRINCIPAL ========== -->
+{% block body %}
+{% endblock body %}
 
- 
+<!-- ========== FOOTER ========== -->
 <footer class="footer">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md">
-          <!-- Chamando a variaveis do app settings -->
-        <div class="footer-div mb-4">
-          <h2 class="foot-heading">{{myfooter.site_name}}</h2>
-          <p>{{myfooter.description}}</p>
-          <ul class="footer-social-links float-md-left float-left mt-5">
-            <li class="icon-social"><a href="#"><span class="bi bi-facebook"></span></a></li>
-            <li class="icon-social"><a href="#"><span class="bi bi-instagram"></span></a></li>
-          </ul>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="footer-div mb-4">
+                    <h2 class="foot-heading">{{ mysettings.site_name }}</h2>
+                    <p>{{ mysettings.description }}</p>
+                    <ul class="footer-social-links mt-5">
+                        <li class="icon-social">
+                            <a href="{{ mysettings.fb_link }}">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="icon-social">
+                            <a href="{{ mysettings.inst_link }}">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div> 
-  </div> 
+    </div>
 </footer>
 
-    <!-- Adicionar javascript aqui -->
+<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>     
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+</body>
 </html>
-
-
-<!-- # Desenvolvimento --> 
-
-<!-- # @norte_dev -->
