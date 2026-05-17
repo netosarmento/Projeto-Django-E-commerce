@@ -3,7 +3,7 @@ from .models import ProductReview, Products, Category, ProductImage
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Avg
-
+from django.db.models import Q
 # Create your views here.
 
 def category_products_view(request):
@@ -75,15 +75,31 @@ def add_review(request, product_id):
     
     return redirect('products:products_view', slug=product.slug)
 
-# Criar a lista de products da Home
 def product_list(request):
-    # Busca todas as categorias que têm produtos ativos
-    categorias = Category.objects.filter(products__isnull=False).distinct()
+    # Pega parâmetro de busca
+    query = request.GET.get('q', '')
     
-    # Para cada categoria, pega os produtos
+    # Base da query
+    products_query = Products.objects.all()
+    
+    # Aplica filtro de busca se existir
+    if query and len(query) >= 2:
+        products_query = products_query.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(category__name__icontains=query)
+        )
+    
+    # Busca categorias com produtos (filtradas ou não)
+    if query:
+        # Se está buscando, mostra produtos encontrados agrupados
+        categorias = Category.objects.filter(products__in=products_query).distinct()
+    else:
+        categorias = Category.objects.filter(products__isnull=False).distinct()
+    
     categorias_com_produtos = []
     for categoria in categorias:
-        produtos = Products.objects.filter(category=categoria)[:5]  # Limita a 5 por linha
+        produtos = products_query.filter(category=categoria)[:5]
         if produtos.exists():
             categorias_com_produtos.append({
                 'categoria': categoria,
@@ -92,8 +108,38 @@ def product_list(request):
     
     context = {
         'categorias_com_produtos': categorias_com_produtos,
+        'query': query,
+        'has_query': bool(query),
+        'total_results': products_query.count() if query else None,
     }
-    return render(request, 'products/product_list.html', context)
+    return render(request, 'product_list.html', context)
+
+def search_products(request):
+    """View para busca de produtos (recarrega página)"""
+    query = request.GET.get('q', '').strip()
+    products = []
+    
+    if query:
+        if len(query) >= 2:
+            products = Products.objects.filter(
+                Q(name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(category__name__icontains=query)
+            ).prefetch_related('images', 'reviews')
+            
+            # Adiciona média de avaliações para cada produto
+            for product in products:
+                product.avg_rating = product.reviews.aggregate(Avg('rate'))['rate__avg'] or 0
+                product.reviews_count = product.reviews.count()
+    
+    context = {
+        'query': query,
+        'products': products,
+        'total_results': products.count() if query else 0,
+        'has_results': len(products) > 0 if query else False,
+    }
+    
+    return render(request, 'search_results.html', context)
 
 # Desenvolvimento 
 

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container my-5">
+    <!-- Cabeçalho da busca -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Resultados da busca</h2>
+            {% if query %}
+                <p class="lead">Você buscou por: <strong>"{{ query }}"</strong></p>
+                <p>Encontramos <strong>{{ total_results }}</strong> produto(s)</p>
+            {% else %}
+                <p class="text-muted">Digite algo para buscar</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Resultados -->
+    {% if products %}
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <!-- Imagem -->
+                <img src="{{ product.image.url }}" 
+                     class="card-img-top" 
+                     alt="{{ product.name }}"
+                     style="height: 200px; object-fit: cover;">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description|truncatewords:15 }}</p>
+                    
+                    <!-- Avaliação -->
+                    <div class="mb-2">
+                        {% if product.avg_rating %}
+                            <div class="text-warning">
+                                {% for i in "12345"|make_list %}
+                                    {% if forloop.counter <= product.avg_rating %}
+                                        ★
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+                                {% endfor %}
+                                <span class="text-muted">({{ product.reviews_count }})</span>
+                            </div>
+                        {% else %}
+                            <small class="text-muted">Sem avaliações</small>
+                        {% endif %}
+                    </div>
+                    
+                    <h4 class="text-primary">R$ {{ product.price }}</h4>
+                </div>
+                
+                <div class="card-footer bg-transparent">
+                    <a href="{% url 'products:products_view' slug=product.slug %}" 
+                       class="btn btn-primary btn-block">
+                        Ver detalhes
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% elif query %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                Nenhum produto encontrado para "{{ query }}".
+            </div>
+            <div class="text-center mt-4">
+                <h5>Sugestões:</h5>
+                <ul class="list-unstyled">
+                    <li>Verifique a ortografia</li>
+                    <li>Tente palavras mais genéricas</li>
+                    <li>Navegue pelas categorias</li>
+                </ul>
+                <a href="{% url 'products:product_list' %}" class="btn btn-secondary">
+                    Ver todos os produtos
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
