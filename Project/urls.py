@@ -22,6 +22,7 @@ from settings.views import home, contact
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('', home , name='home'),
     path('', contact , name='contatos'),
     path('contas/', include(('users.urls', 'users'), namespace='users')),
