@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Settings, Banner, Propaganda
+from .models import Settings, Banner, Propaganda, Carrossel
 
 @admin.register(Settings)
 class SettingsAdmin(admin.ModelAdmin):
@@ -30,6 +30,13 @@ class PropagandaAdmin(admin.ModelAdmin):
     list_display = ['title', 'order', 'is_active']
     list_editable = ['order', 'is_active']
     list_filter = ['is_active']
+    search_fields = ['title']
+
+@admin.register(Carrossel)
+class CarrosselAdmin(admin.ModelAdmin):
+    list_display = ['title', 'order', 'is_active', 'created_at']
+    list_editable = ['order', 'is_active']
+    list_filter = ['is_active', 'created_at']
     search_fields = ['title']
 
 # Desenvolvimento 

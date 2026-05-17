@@ -72,7 +72,25 @@ def add_review(request, product_id):
                 feedback=feedback
             )
             messages.success(request, 'Avaliação enviada com sucesso!')
-        
-        return redirect('products_view', slug=product.slug)
     
-    return redirect('products_view', slug=product.slug)
+    return redirect('products:products_view', slug=product.slug)
+
+# Criar a lista de products da Home
+def product_list(request):
+    # Busca todas as categorias que têm produtos ativos
+    categorias = Category.objects.filter(products__isnull=False).distinct()
+    
+    # Para cada categoria, pega os produtos
+    categorias_com_produtos = []
+    for categoria in categorias:
+        produtos = Products.objects.filter(category=categoria)[:5]  # Limita a 5 por linha
+        if produtos.exists():
+            categorias_com_produtos.append({
+                'categoria': categoria,
+                'produtos': produtos
+            })
+    
+    context = {
+        'categorias_com_produtos': categorias_com_produtos,
+    }
+    return render(request, 'products/product_list.html', context)

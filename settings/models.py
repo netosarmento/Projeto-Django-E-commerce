@@ -18,7 +18,7 @@ class Settings(models.Model):
         return self.site_name
 
 
-# NOVO MODEL PARA BANNER PRINCIPAL
+# BANNER PRINCIPAL
 class Banner(models.Model):
     title = models.CharField(max_length=100, verbose_name="Título do Banner")
     image = models.ImageField(upload_to="banners/", verbose_name="Imagem do Banner")
@@ -36,7 +36,7 @@ class Banner(models.Model):
         verbose_name_plural = "Banners"
 
 
-# NOVO MODEL PARA IMAGENS DE PROPAGANDA (3 imagens)
+# Model Propaganda
 class Propaganda(models.Model):
     title = models.CharField(max_length=100, verbose_name="Título")
     image = models.ImageField(upload_to="propagandas/", verbose_name="Imagem")
@@ -52,3 +52,20 @@ class Propaganda(models.Model):
         ordering = ['order']
         verbose_name = "Propaganda"
         verbose_name_plural = "Propagandas"
+        
+# Carrosel Home        
+class Carrossel(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Título da Imagem")
+    image = models.ImageField(upload_to="carrossel/", verbose_name="Imagem do Carrossel")
+    link = models.URLField(blank=True, null=True, verbose_name="Link (opcional)")
+    is_active = models.BooleanField(default=True, verbose_name="Ativo")
+    order = models.IntegerField(default=0, verbose_name="Ordem (1, 2, 3...)")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['order', 'created_at']
+        verbose_name = "Carrossel"
+        verbose_name_plural = "Carrossel"
