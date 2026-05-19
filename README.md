@@ -58,6 +58,7 @@ Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+```
 
 ### 📊 Funcionalidades Implementadas
 
