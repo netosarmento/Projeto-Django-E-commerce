@@ -165,7 +165,7 @@ JSON é leve e universal
 Permite comunicação entre diferentes sistemas
 
 **Implementação no projeto:**
-
+```
 # Modelo Python
 product = Products.objects.get(id=1)
 # <Product: Notebook Dell>
@@ -182,6 +182,8 @@ class ProductSerializer(serializers.ModelSerializer):
     "name": "Notebook Dell",
     "price": "3500.00"
 }
+
+````
 
 ### 3. 🛡️ Django ORM e Segurança
 O que é ORM?
