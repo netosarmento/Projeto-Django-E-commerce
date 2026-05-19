@@ -300,7 +300,7 @@ python manage.py runserver
 
 
 **Comandos de Criação do Projeto:**
-```
+
 # Criar o projeto
 django-admin startproject Project
 
@@ -310,30 +310,38 @@ python manage.py startapp orders        # Pedidos
 python manage.py startapp users         # Perfil de usuários
 python manage.py startapp carts         # Carrinho de compras
 python manage.py startapp api           # API centralizada
-```
 
 
-📚 Referências e Recursos
-Documentação Oficial
-Django Documentation
 
-Django REST Framework
+## 📚 Referências e Recursos
 
-Python Official Docs
+### Documentação Oficial
 
-Conceitos Teóricos
+- [Django Documentation](https://docs.djangoproject.com/)
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Python Official Docs](https://docs.python.org/)
+
+### Conceitos Teóricos
+
+- [REST APIs - Fielding, Roy (2000)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [DTO Pattern - Fowler, Martin](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
+- [ORM Concepts - Ambler, Scott](https://www.agiledata.org/essays/mappingObjects.html)
+
+### Ferramentas Utilizadas
+
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [VS Code](https://code.visualstudio.com/)
+- [Bootstrap 4](https://getbootstrap.com/docs/4.6/)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.3/)
+- [Font Awesome](https://fontawesome.com/icons)
+
+### Conceitos Teóricos
 REST APIs - Fielding, Roy (2000)
 
 DTO Pattern - Fowler, Martin (2002)
 
 ORM Concepts - Ambler, Scott (2004)
-
-Ferramentas Utilizadas
-Git - Controle de versão
-
-GitHub - Repositório remoto
-
-VS Code - Editor de código
 
 📞 Contato
 Desenvolvedor: Carlos Jorge Sarmento Neto
