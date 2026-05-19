@@ -297,7 +297,7 @@ python manage.py runserver
 # Site: http://127.0.0.1:8000/
 # Admin: http://127.0.0.1:8000/admin/
 # API: http://127.0.0.1:8000/api/
-
+```
 
 **Comandos de Criação do Projeto:**
 
