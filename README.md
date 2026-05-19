@@ -343,9 +343,7 @@ python manage.py test --verbosity=2
 
 # Executar um teste específico
 python manage.py test products.tests.ProductTestCase.test_search_product
-
-
-
+```
 
 
 🚀 Como Executar o Projeto
