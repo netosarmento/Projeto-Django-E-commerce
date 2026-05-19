@@ -12,8 +12,7 @@
 
 | Nome | Papel |
 |---|---|
-| Carlos Jorge Sarmento Neto | Desenvolvedor |
-
+| Carlos Jorge Sarmento Neto | Desenvolvedor Full-Stack |
 
 ---
 
@@ -22,77 +21,52 @@
 API RESTful para sistema de **E-commerce** desenvolvida com Django e Django REST Framework.  
 Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de APIs e integração com sistemas externos.
 
-### Funcionalidades planejadas
+### 🎯 Objetivos do Projeto
 
-- [ ] CRUD de produtos
-- [ ] CRUD de categorias
-- [ ] Autenticação JWT
-- [ ] Carrinho de compras
-- [ ] Pedidos e checkout
-- [ ] Pagamentos integrados (mock)
-- [ ] Documentação automática com Swagger/DRF-YASG
+- Compreender os conceitos de **API RESTful** e sua importância na arquitetura moderna de sistemas
+- Implementar um sistema completo de e-commerce com **separação de responsabilidades**
+- Utilizar o **Django ORM** para manipulação segura do banco de dados
+- Aprender sobre **serialização** de dados e comunicação entre backend e frontend
+- Aplicar conceitos de **segurança** contra SQL Injection e outras vulnerabilidades
+
+### 📊 Funcionalidades Implementadas
+
+#### ✅ Concluídas
+- [x] Sistema de busca de produtos com parâmetros GET
+- [x] API de configurações do site (Settings, Banners, Carrossel)
+- [x] Listagem de produtos com filtros (categoria, preço, nome)
+- [x] Sistema de avaliações de produtos (rating 1-5 estrelas)
+- [x] Carrinho de compras persistente por usuário
+- [x] Sistema de pedidos e cálculo de valores
+- [x] Autenticação de usuários (login, registro, perfil)
+- [x] Interface administrativa (Django Admin)
+
+#### 🚧 Em desenvolvimento
+- [ ] Sistema de pagamentos integrados
+- [ ] Envio de e-mails de confirmação
+- [ ] Relatórios de vendas
+- [ ] Dashboard administrativo
 
 ---
 
-## 🛠 Tecnologias utilizadas
+## 🛠 Tecnologias Utilizadas
 
-- Python 3.11+
-- Django 5.x
-- Django REST Framework
-- MySQL (ou SQLite para desenvolvimento)
-- Simple JWT (autenticação)
-- DRF-YASG (documentação)
-- django-cors-headers
+### Backend
+| Tecnologia | Versão | Finalidade |
+|------------|--------|-------------|
+| **Python** | 3.14+ | Linguagem principal |
+| **Django** | 6.0.4 | Framework web |
+| **Django REST Framework** | 3.14+ | Criação da API REST |
+| **SQLite** | 3.x | Banco de dados (desenvolvimento) |
+| **Pillow** | 10.x | Manipulação de imagens |
+
+### Ferramentas de Desenvolvimento
+- **Git** - Controle de versão
+- **Virtualenv** - Isolamento de dependências
+- **VS Code** - IDE de desenvolvimento
 
 ---
 
-## 🚀 Como executar o projeto
+## 🏗️ Arquitetura do Projeto
 
-### Pré-requisitos
-
-- Python 3.11 ou superior
-- Git
-- Virtualenv (recomendado)
-
-### Passo a passo
-
-```bash
-# 1. Clone o repositório
-git clone https://github.com/netosarmento/Projeto-Django-E-commerce.git
-cd Projeto-Django-E-commerce
-
-# 2. Crie o ambiente virtual
-python -m venv venv
-
-# 3. Ative o ambiente virtual
-# Linux/Mac:
-source venv/bin/activate
-# Windows:
-venv\Scripts\activate
-
-# 4. Instale as dependências
-pip install -r requirements.txt
-
-# 5. Configure as variáveis de ambiente
-cp .env.example .env
-# Edite o .env com suas configurações
-
-# 6. Execute as migrações
-python manage.py migrate
-
-# 7. Crie um superusuário
-python manage.py createsuperuser
-
-# 8. Inicie o servidor
-python manage.py runserver
-
-# Passos iniciais executados na criação do projeto:
-
-# Criar Projeto
-django-admin startproject Project 
-
-# Criar Apps
-python manage.py startapp products
-python manage.py startapp orders
-python manage.py startapp users
-python manage.py startapp carts
+### Estrutura de Diretórios
