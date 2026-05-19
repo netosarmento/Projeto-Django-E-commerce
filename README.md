@@ -151,7 +151,7 @@ GET /api/products/?category=1&min_price=100
     {"id": 2, "name": "Mouse", "price": 50.00}
   ]
 }
-
+```
 ### 2. 📦 Serialização (Object → JSON)
 O que é?
 Processo de converter objetos complexos (Python/Model) em formato simples (JSON) que pode ser transmitido pela web.
@@ -198,7 +198,7 @@ Código mais limpo e legível
 Banco de dados independente (SQLite, PostgreSQL, MySQL)
 
 **Exemplo de Proteção:**
-
+```
 # ❌ Vulnerável a SQL Injection (NUNCA fazer)
 nome = request.GET.get('nome')
 query = f"SELECT * FROM products WHERE name LIKE '%{nome}%'"
@@ -208,21 +208,21 @@ cursor.execute(query)  # PERIGO!
 nome = request.GET.get('nome')
 products = Products.objects.filter(name__icontains=nome)
 # Django escapa automaticamente caracteres especiais
-
+```
 ### 4. 🔍 Parâmetros GET para Busca
 O que são?
 Dados enviados na URL para filtrar ou personalizar respostas.
 
 Exemplos no projeto:
-
+```
 /api/products/                    # Todos produtos
 /api/products/?category=1         # Filtra por categoria
 /api/products/?min_price=100      # Preço mínimo
 /api/products/?search=notebook    # Busca por nome
 /api/products/?ordering=-price    # Ordena por preço decrescente
-
+```
 Vantagens:
-
+```
 ✅ Cacheável - Pode ser armazenado em CDN/navegador
 
 ✅ Compartilhável - URLs podem ser salvas como favoritos
@@ -230,13 +230,13 @@ Vantagens:
 ✅ Bookmarkável - Mantém os filtros ao favoritar
 
 ✅ Sem impacto no servidor - Requisição leve
-
+```
 ### 5. 📝 DTO (Data Transfer Object) com Serializers
 O que é?
 Padrão de projeto que define como os dados devem ser transferidos entre sistemas.
 
 **Aplicação:**
-
+```
 # Definindo quais campos serão expostos na API
 class ProductListSerializer(serializers.ModelSerializer):
     """Versão LEVE do produto - para listagens"""
@@ -251,17 +251,19 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         model = Products
         fields = ['id', 'name', 'description', 'price', 'image', 'reviews']
         # ✅ Inclui todos os campos detalhados
-
+```
 
 
 🚀 Como Executar o Projeto
 
 **Pré-requisitos**
+```
 -Python 3.11 ou superior
 
 -Git
 
 -Virtualenv (recomendado)
+```
 |-----------------**Passo a Passo**-------------------------------|
 # 1. Clone o repositório
 git clone https://github.com/netosarmento/Projeto-Django-E-commerce.git
