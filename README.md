@@ -346,16 +346,21 @@ DTO Pattern - Fowler, Martin (2002)
 ORM Concepts - Ambler, Scott (2004)
 
 ## 📞 Contato
+```
 Desenvolvedor: Carlos Jorge Sarmento Neto
 GitHub: @netosarmento
 Instagram: @norte_dev
 
+```
 ## 📄 Licença
+
+```
 Projeto acadêmico - uso educacional permitido.
-
+```
 ## 🙏 Agradecimentos
-Professor Fábio Vidal pela orientação
-
+```
+Professor Fábio Vidal, eo Professor Ennio pela orientação
+```
 ## Colegas de turma pelas discussões técnicas
 
 ## Comunidade Django Brasil pelo suporte
