@@ -346,7 +346,7 @@ python manage.py test products.tests.ProductTestCase.test_search_product
 ```
 
 
-🚀 Como Executar o Projeto
+# 🚀 Como Executar o Projeto
 
 **Pré-requisitos**
 ```
