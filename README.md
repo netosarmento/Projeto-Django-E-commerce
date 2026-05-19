@@ -1,7 +1,7 @@
 # 🛒 Django E-commerce API
 
 > Projeto desenvolvido para a disciplina de Desenvolvimento Web  
-> **Pós-Graduação em Desenvolvimento de Sistemas**
+> **Pós-Graduação em Desenvolvimento de Sistemas - IFTO**
 
 ---
 
@@ -11,7 +11,7 @@
 ## 👥 Equipe
 
 | Nome | Papel |
-|---|---|
+|------|-------|
 | Carlos Jorge Sarmento Neto | Desenvolvedor Full-Stack |
 
 ---
@@ -19,7 +19,7 @@
 ## 📋 Sobre o Projeto
 
 API RESTful para sistema de **E-commerce** desenvolvida com Django e Django REST Framework.  
-Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de APIs e integração com sistemas externos.
+Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de APIs e segurança.
 
 ### 🎯 Objetivos do Projeto
 
@@ -28,6 +28,8 @@ Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de
 - Utilizar o **Django ORM** para manipulação segura do banco de dados
 - Aprender sobre **serialização** de dados e comunicação entre backend e frontend
 - Aplicar conceitos de **segurança** contra SQL Injection e outras vulnerabilidades
+
+---
 
 ## 🎨 Frontend e Interface
 
@@ -41,23 +43,21 @@ Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de
 | **jQuery** | 3.6.0 | Manipulação do DOM e AJAX |
 | **Popper.js** | 2.11+ | Tooltips e popovers do Bootstrap |
 
-### Por que usar Bootstrap 4 e 5 juntos?
-
-O projeto utiliza **ambas as versões** por compatibilidade:
-- **Bootstrap 4**: Componentes legados e estabilidade
-- **Bootstrap 5**: Ícones modernos e novas funcionalidades
-- **Font Awesome**: Ícones adicionais e redes sociais
-
 ### CDNs Utilizadas
 
-#### Bootstrap 4 (Layout base)
 ```html
-<!-- CSS do Bootstrap 4 -->
-<link rel="stylesheet" 
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
-<!-- JS do Bootstrap 4 -->
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 ### 📊 Funcionalidades Implementadas
 
