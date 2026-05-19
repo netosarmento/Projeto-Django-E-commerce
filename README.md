@@ -254,6 +254,100 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 ```
 
 
+## 🧪 Plano de Testes
+
+### Metodologia
+
+Os testes foram realizados seguindo as seguintes categorias:
+
+| Tipo de Teste | Descrição | Ferramenta |
+|---------------|-----------|------------|
+| **Teste de Unidade** | Verifica componentes isolados (models, serializers) | Django TestCase |
+| **Teste de Integração** | Verifica interação entre componentes (views, APIs) | Django TestClient |
+| **Teste Funcional** | Verifica fluxos completos (compra, cadastro) | Selenium (simulado) |
+| **Teste de API** | Verifica endpoints REST | Postman/DRF Browsable API |
+| **Teste de Segurança** | Verifica SQL Injection, XSS | Testes manuais |
+
+---
+
+### 🎯 Cenários de Teste Implementados
+
+#### 1. Testes de Produtos
+
+| ID | Cenário | Entrada | Resultado Esperado | Status |
+|----|---------|---------|-------------------|--------|
+| P001 | Buscar produto por nome | `?q=notebook` | Retornar produtos com "notebook" no nome | ✅ OK |
+| P002 | Buscar por categoria | `?category=1` | Retornar apenas produtos da categoria 1 | ✅ OK |
+| P003 | Buscar por faixa de preço | `?min_price=100&max_price=500` | Produtos entre R$100 e R$500 | ✅ OK |
+| P004 | Buscar sem resultados | `?q=produtoinexistente123` | Retornar lista vazia | ✅ OK |
+| P005 | Busca com menos de 2 caracteres | `?q=a` | Mensagem "Digite pelo menos 2 caracteres" | ✅ OK |
+| P006 | Acessar produto com slug inválido | `/produto/slug-invalido/` | Página 404 (não encontrado) | ✅ OK |
+| P007 | Adicionar avaliação sem login | POST `/api/reviews/` | Status 401 (não autorizado) | ✅ OK |
+| P008 | Adicionar avaliação com sucesso | POST com rate=5 | Status 201 (criado) | ✅ OK |
+
+#### 2. Testes de Carrinho
+
+| ID | Cenário | Entrada | Resultado Esperado | Status |
+|----|---------|---------|-------------------|--------|
+| C001 | Adicionar produto ao carrinho | `product_id=1, quantity=2` | Carrinho atualizado com 2 itens | ✅ OK |
+| C002 | Adicionar produto duplicado | Mesmo produto duas vezes | Quantidade acumulada (2+3=5) | ✅ OK |
+| C003 | Remover item do carrinho | DELETE `/cart/item/1/` | Item removido do carrinho | ✅ OK |
+| C004 | Atualizar quantidade | `quantity=5` | Quantidade alterada para 5 | ✅ OK |
+| C005 | Carrinho vazio | Nenhum produto | Total = 0, itens = 0 | ✅ OK |
+| C006 | Calcular total do carrinho | 2 produtos de R$50 | Total = R$100 | ✅ OK |
+
+#### 3. Testes de Pedidos
+
+| ID | Cenário | Entrada | Resultado Esperado | Status |
+|----|---------|---------|-------------------|--------|
+| O001 | Criar pedido com carrinho vazio | POST `/orders/create/` | Erro "Carrinho vazio" | ✅ OK |
+| O002 | Criar pedido com sucesso | Dados de endereço completos | Pedido criado, carrinho limpo | ✅ OK |
+| O003 | Listar pedidos do usuário | GET `/orders/` | Lista de pedidos do usuário logado | ✅ OK |
+| O004 | Ver detalhes do pedido | GET `/orders/1/` | Dados completos do pedido | ✅ OK |
+
+#### 4. Testes de Autenticação
+
+| ID | Cenário | Entrada | Resultado Esperado | Status |
+|----|---------|---------|-------------------|--------|
+| A001 | Login com credenciais válidas | username/password corretos | Redirecionado para home | ✅ OK |
+| A002 | Login com senha errada | username correto, senha errada | Mensagem de erro | ✅ OK |
+| A003 | Registrar novo usuário | Dados válidos | Conta criada, redirecionado | ✅ OK |
+| A004 | Registrar com email duplicado | Email já existente | Mensagem "Email já cadastrado" | ✅ OK |
+| A005 | Acessar página de perfil sem login | GET `/profile/` | Redirecionado para login | ✅ OK |
+
+#### 5. Testes de Segurança
+
+| ID | Cenário | Entrada Maliciosa | Resultado Esperado | Status |
+|----|---------|-------------------|-------------------|--------|
+| S001 | SQL Injection na busca | `?q=' OR '1'='1` | Tratado como texto, não como SQL | ✅ OK |
+| S002 | XSS (Cross-site Scripting) | `<script>alert('xss')</script>` | Caracteres escapados | ✅ OK |
+| S003 | Acesso direto a arquivos | GET `/media/.env` | Acesso negado | ✅ OK |
+
+---
+
+### 🛠️ Como Executar os Testes
+
+#### Testes Automatizados (Django)
+
+```bash
+# Executar todos os testes
+python manage.py test
+
+# Executar testes de um app específico
+python manage.py test products
+python manage.py test carts
+python manage.py test orders
+
+# Executar com verbosidade (mostra mais detalhes)
+python manage.py test --verbosity=2
+
+# Executar um teste específico
+python manage.py test products.tests.ProductTestCase.test_search_product
+
+
+
+
+
 🚀 Como Executar o Projeto
 
 **Pré-requisitos**
