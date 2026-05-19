@@ -264,7 +264,10 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 -Virtualenv (recomendado)
 ```
-|-----------------**Passo a Passo**-------------------------------|
+
+### Passo a Passo
+
+```bash
 # 1. Clone o repositório
 git clone https://github.com/netosarmento/Projeto-Django-E-commerce.git
 cd Projeto-Django-E-commerce
@@ -290,12 +293,14 @@ python manage.py createsuperuser
 python manage.py runserver
 
 # 7. Acesse no navegador
+```
 # Site: http://127.0.0.1:8000/
 # Admin: http://127.0.0.1:8000/admin/
 # API: http://127.0.0.1:8000/api/
-
+```
 
 **Comandos de Criação do Projeto:**
+```
 # Criar o projeto
 django-admin startproject Project
 
@@ -305,7 +310,7 @@ python manage.py startapp orders        # Pedidos
 python manage.py startapp users         # Perfil de usuários
 python manage.py startapp carts         # Carrinho de compras
 python manage.py startapp api           # API centralizada
-
+```
 
 
 📚 Referências e Recursos
