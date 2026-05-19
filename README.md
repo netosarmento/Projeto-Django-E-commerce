@@ -101,29 +101,30 @@ Projeto acadêmico com foco em boas práticas de desenvolvimento, arquitetura de
 ## 🏗️ Arquitetura do Projeto
 
 ### Estrutura de Diretórios
-┌─────────────────────────────────────────────────────────┐
-│ Frontend (Interface) │
-│ HTML, CSS, JavaScript, Bootstrap │
-└─────────────────────────────────────────────────────────┘
-↕ (Requisições HTTP)
-┌─────────────────────────────────────────────────────────┐
-│ API REST (Camada de Interface) │
-│ Serializers, Views API, URLs API │
-│ Formatos: JSON, XML │
-└─────────────────────────────────────────────────────────┘
-↕
-┌─────────────────────────────────────────────────────────┐
-│ Django ORM (Abstração de Dados) │
-│ Models, Querysets, Managers │
-│ Proteção automática contra SQL Injection │
-└─────────────────────────────────────────────────────────┘
-↕
-┌─────────────────────────────────────────────────────────┐
-│ Banco de Dados (Persistência) │
-│ SQLite / PostgreSQL │
-└─────────────────────────────────────────────────────────┘
 
----
+``` 
+┌─────────────────────────────────────────────────────────┐
+│                    Frontend (Interface)                  │
+│            HTML, CSS, JavaScript, Bootstrap              │
+└─────────────────────────────────────────────────────────┘
+                              ↕
+┌─────────────────────────────────────────────────────────┐
+│                   API REST (Camada de Interface)         │
+│              Serializers, Views API, URLs API            │
+│                    Formatos: JSON                        │
+└─────────────────────────────────────────────────────────┘
+                              ↕
+┌─────────────────────────────────────────────────────────┐
+│                 Django ORM (Abstração de Dados)          │
+│         Models, Querysets, Managers                      │
+│         Proteção automática contra SQL Injection         │
+└─────────────────────────────────────────────────────────┘
+                              ↕
+┌─────────────────────────────────────────────────────────┐
+│              Banco de Dados (Persistência)               │
+│                     SQLite / PostgreSQL                  │
+└─────────────────────────────────────────────────────────┘
+``` 
 
 ## 🎓 Conceitos Fundamentais Aplicados
 
