@@ -302,15 +302,17 @@ python manage.py runserver
 **Comandos de Criação do Projeto:**
 
 # Criar o projeto
+```bash
 django-admin startproject Project
-
+```
 # Criar os apps
+```bash
 python manage.py startapp products      # Produtos e categorias
 python manage.py startapp orders        # Pedidos
 python manage.py startapp users         # Perfil de usuários
 python manage.py startapp carts         # Carrinho de compras
 python manage.py startapp api           # API centralizada
-
+```
 
 
 ## 📚 Referências e Recursos
