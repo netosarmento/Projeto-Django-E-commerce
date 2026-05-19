@@ -293,11 +293,11 @@ python manage.py createsuperuser
 python manage.py runserver
 
 # 7. Acesse no navegador
-```
+
 # Site: http://127.0.0.1:8000/
 # Admin: http://127.0.0.1:8000/admin/
 # API: http://127.0.0.1:8000/api/
-```
+
 
 **Comandos de Criação do Projeto:**
 ```
